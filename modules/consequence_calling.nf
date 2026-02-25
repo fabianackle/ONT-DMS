@@ -6,6 +6,9 @@ process CONSEQUENCE_CALLING {
     input:
     tuple val(sample_id), path(variants), path(references)
 
+    output:
+    tuple val(sample_id), path("${sample_id}_consequences.csv")
+
     script:
     """
     write_gff.py \
@@ -21,8 +24,9 @@ process CONSEQUENCE_CALLING {
         > ${sample_id}_consequences.vcf
 
     bcftools query \
-        -f '[%CHROM,%FILTER,%TBCSQ{0}\n]' \
+        -f '[%CHROM\t%QUAL\t%FILTER\t%TBCSQ{0}\n]' \
         ${sample_id}_consequences.vcf \
+        | parse_consequences.py \
         > ${sample_id}_consequences.csv
     """
 }
