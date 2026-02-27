@@ -7,7 +7,7 @@ process CONSEQUENCE_CALLING {
     tuple val(sample_id), path(variants), path(references)
 
     output:
-    tuple val(sample_id), path("${sample_id}_consequences.csv")
+    tuple val(sample_id), path("${sample_id}_consequences.csv"), emit: consequences
 
     script:
     """

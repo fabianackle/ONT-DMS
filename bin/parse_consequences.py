@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Reads TSV from stdin from bcftools query, expects CHROM, QUAL, FILTER, and TBCSQ columns.
-Output to stdout: CSV with header and the following columns:
+Outputs CSV to stdout; CSV with header and the following columns:
 barcode_id (CHROM), quality, filter, consequence, aa_change, dna_change.
 """
 
