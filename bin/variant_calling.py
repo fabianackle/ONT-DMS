@@ -81,10 +81,10 @@ def compare_aa_sequences(sequence, reference):
         reference (str): The reference amino acid sequence.
 
     Returns:
-        list: A list of amino acid changes, as tuples (position, refAA, newAA).
+        list: A list of amino acid changes, as tuples (position 1-based, refAA, newAA).
     """
     changes = [
-        (position, ref_base, seq_base)
+        (position+1, ref_base, seq_base)
         for position, (ref_base, seq_base) in enumerate(zip(reference, sequence))
         if ref_base != seq_base
     ]

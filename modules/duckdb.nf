@@ -9,7 +9,7 @@ process DUCKDB {
     publishDir params.outdir, mode: 'copy'
 
     input:
-    tuple val(sample_id), path(reads_csv), path(hq_barcodes_csv), path(mapped_reads_csv), path(mapped_reads_filtered_csv), path(variants_csv)
+    tuple val(sample_id), path(reads_csv), path(hq_barcodes_csv), path(mapped_reads_csv), path(mapped_reads_filtered_csv), path(variants_csv), path(consequences_csv)
 
     output:
     tuple val(sample_id), path("${sample_id}.db"), emit: database
@@ -60,6 +60,17 @@ process DUCKDB {
             'position': 'UINT16',
             'reference_aa': VARCHAR,
             'variant_aa': 'VARCHAR'
+        });
+
+    CREATE TABLE consequences AS
+    FROM read_csv('${consequences_csv}',
+        columns = {
+            'barcode_id': 'UUID',
+            'quality': 'FLOAT',
+            'filter': 'VARCHAR',
+            'consequence': 'VARCHAR',
+            'aa_change': 'VARCHAR',
+            'dna_change': 'VARCHAR'
         });
 
     CREATE VIEW reads_summary AS
