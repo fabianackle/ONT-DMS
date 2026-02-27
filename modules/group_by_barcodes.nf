@@ -1,8 +1,8 @@
 process GROUP_BY_BARCODES {
-    conda "bioconda::bwa=0.7.19 bioconda::samtools=1.22.1 bioconda::dnaio=1.2.3 conda-forge::polars=1.35.1 conda-forge::pyarrow=22.0.0 conda-forge::python-duckdb=1.4.1"
+    conda "bioconda::bwa=0.7.19 bioconda::samtools=1.23 bioconda::dnaio=1.2.3 conda-forge::polars=1.38.1 conda-forge::pyarrow=23.0.1 conda-forge::python-duckdb=1.4.4"
     container "${ workflow.containerEngine == 'apptainer' ?
-        'oras://community.wave.seqera.io/library/bwa_dnaio_samtools_polars_pruned:a0bc9e59a0317e84' :
-        'community.wave.seqera.io/library/bwa_dnaio_samtools_polars_pruned:20f93e2b62ebb5b6' }"
+        'oras://community.wave.seqera.io/library/bwa_dnaio_samtools_polars_pruned:1a408e051b718cb1' :
+        'community.wave.seqera.io/library/bwa_dnaio_samtools_polars_pruned:927a9b0310d2951b' }"
 
     tag "${sample_id}"
 

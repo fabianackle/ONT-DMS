@@ -1,5 +1,5 @@
 process DORADO_ALIGNER {
-    container "nanoporetech/dorado:shaf2aed69855de85e60b363c9be39558ef469ec365"
+    container "nanoporetech/dorado:shac8f356489fa8b44b31beba841b84d2879de2088e"
     
     tag "${sample_id}"
 
