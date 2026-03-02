@@ -1,8 +1,8 @@
 process EXTRACT_BARCODES {
-    conda "bioconda::cutadapt=5.2 bioconda::seqkit=2.12.0"
+    conda "bioconda::cutadapt=5.2 bioconda::seqkit=2.13.0"
     container "${ workflow.containerEngine == 'apptainer' ?
-        'oras://community.wave.seqera.io/library/cutadapt_seqkit:6a3b4d23f6b2583b' :
-        'community.wave.seqera.io/library/cutadapt_seqkit:a540fd399cfce725' }"
+        'oras://community.wave.seqera.io/library/cutadapt_seqkit:73a7fe5bd2d6c227' :
+        'community.wave.seqera.io/library/cutadapt_seqkit:e26d33a19761d301' }"
 
     tag "${sample_id}"
 
