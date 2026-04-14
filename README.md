@@ -1,6 +1,6 @@
-# NestLink-pipeline
+# ONT-DMS
 
-NestLink-pipeline is a Nextflow pipeline for processing barcoded protein variant libraries and [NestLink libraries](https://www.nature.com/articles/s41592-019-0389-8) sequenced by nanopore sequencing.
+ONT-DMS is a Nextflow pipeline for processing barcoded protein variant libraries and [NestLink libraries](https://www.nature.com/articles/s41592-019-0389-8) sequenced by nanopore sequencing.
 Reads are binned according to their barcodes or flycodes (UMIs).
 Accurate consensus sequences are calculated using Dorado polish.
 Finally, variants are called with the pipeline, linking barcodes or flycodes with their respective protein variants.
@@ -27,7 +27,7 @@ Finally, variants are called with the pipeline, linking barcodes or flycodes wit
 
 ## Running the pipeline
 
-1. Clone the repository with `git clone https://github.com/fabianackle/NestLink-pipeline.git`.
+1. Clone the repository with `git clone https://github.com/fabianackle/ONT-DMS.git`.
 2. Check the nextflow configuration file `nextflow.config`.
 3. Create a `params.json` file with the parameters listed below, specify the nanopore reads (BAM) and reference sequence, see the examples contained in this repo.
 4. Run the pipeline with either `./run_NL-pipeline.sh` for local execution or on a cluster with `sbatch run_NL-pipeline.slurm`.
