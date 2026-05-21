@@ -6,7 +6,7 @@ Accurate consensus sequences are calculated using Dorado polish.
 Finally, variants are called with the pipeline, linking barcodes or flycodes with their respective protein variants.
 
 > [!NOTE]
-> Tested on macOS 15.7 (Mamba), Windows 11 (WSL with Docker), and Ubuntu 22.04 (Mamba, Apptainer).
+> Tested on macOS 26.5 (Mamba), Windows 11 (WSL with Docker), and Ubuntu 24.04 (Mamba, Apptainer).
 
 ## Requirements
 ### Local execution
@@ -23,12 +23,12 @@ Finally, variants are called with the pipeline, linking barcodes or flycodes wit
 - Dorado
 
 > [!TIP]
-> Add dorado to your PATH e.g. by adding `export PATH="$PATH:/home/fackle/data/dorado-1.2.0-linux-x64/bin"` to your `.bashrc`.
+> Add dorado to your PATH e.g. by adding `export PATH="$PATH:/home/fackle/mybin/dorado-1.4.0-linux-x64/bin"` to your `.bashrc`.
 
 ## Running the pipeline
 
 1. Clone the repository with `git clone https://github.com/fabianackle/ONT-DMS.git`.
-2. Check the nextflow configuration file `nextflow.config`.
+2. Edit the nextflow configuration file `nextflow.config`.
 3. Create a `params.json` file with the parameters listed below, specify the nanopore reads (BAM) and reference sequence, see the examples contained in this repo.
 4. Run the pipeline with either `./run_NL-pipeline.sh` for local execution or on a cluster with `sbatch run_NL-pipeline.slurm`.
 
