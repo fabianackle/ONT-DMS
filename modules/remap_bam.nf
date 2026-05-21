@@ -1,8 +1,8 @@
 process REMAP_BAM {
-    conda "bioconda::dnaio=1.2.3 bioconda::pysam=0.23.3 bioconda::samtools=1.23"
+    conda "bioconda::dnaio=1.2.3 bioconda::pysam=0.24.0 bioconda::samtools=1.23.1"
     container "${ workflow.containerEngine == 'apptainer' ?
-        'oras://community.wave.seqera.io/library/dnaio_pysam_samtools:ecf08aed3ecd09ca' :
-        'community.wave.seqera.io/library/dnaio_pysam_samtools:28dfe39743b884c5' }"
+        'oras://community.wave.seqera.io/library/dnaio_pysam_samtools:5de6d6856b28ee40' :
+        'community.wave.seqera.io/library/dnaio_pysam_samtools:0a25efd3ab46107d' }"
 
     tag "${sample_id}"
 

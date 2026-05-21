@@ -1,8 +1,8 @@
 process CONSEQUENCE_CALLING {
-    conda "bioconda::dnaio=1.2.3 bioconda::bcftools=1.23"
+    conda "bioconda::dnaio=1.2.3 bioconda::bcftools=1.23.1"
     container "${ workflow.containerEngine == 'apptainer' ?
-        'oras://community.wave.seqera.io/library/bcftools_dnaio:85f21c386d2210fb' :
-        'community.wave.seqera.io/library/bcftools_dnaio:c084fe8e6a72def2' }"
+        'oras://community.wave.seqera.io/library/bcftools_dnaio:cc9d8b60c21ae82f' :
+        'community.wave.seqera.io/library/bcftools_dnaio:aa359363d1c71dda' }"
 
     tag "${sample_id}"
 
