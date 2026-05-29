@@ -23,6 +23,8 @@ def main(barcode_map, input_bam):
 
         ln = header_dict["SQ"][0]["LN"]
 
+        header_dict["SQ"] = []
+
         header_dict["SQ"] += [{"SN": rname, "LN": ln} for rname in rnames]   # new references
         header = pysam.AlignmentHeader.from_dict(header_dict)
         sys.stdout.write(str(header))
