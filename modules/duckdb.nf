@@ -1,8 +1,8 @@
 process DUCKDB {
-    conda "conda-forge::duckdb-cli=1.5.3"
+    conda "conda-forge::duckdb-cli=1.5.5"
     container "${ workflow.containerEngine == 'apptainer' ?
-        'oras://community.wave.seqera.io/library/duckdb-cli:1.5.3--1b74915d48b05830' :
-        'community.wave.seqera.io/library/duckdb-cli:1.5.3--491aebc759945c8d' }"
+        'oras://community.wave.seqera.io/library/duckdb-cli:1.5.5--5ae76bf8b4435b22' :
+        'community.wave.seqera.io/library/duckdb-cli:1.5.5--35c5826a51414356' }"
 
     tag "${sample_id}"
 
