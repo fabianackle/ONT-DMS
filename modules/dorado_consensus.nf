@@ -1,5 +1,5 @@
 process DORADO_CONSENSUS {
-    container "nanoporetech/dorado:sha38b4ce849afa13eac8075f0b41cecd30799f169b"
+    container "nanoporetech/dorado:sha9809639e07a927bcc0f584dadd5e59674cf59f3f"
 
     tag "${sample_id}"
 
