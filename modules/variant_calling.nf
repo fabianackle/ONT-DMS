@@ -1,8 +1,8 @@
 process VARIANT_CALLING {
-    conda "bioconda::dnaio=1.2.4 conda-forge::biopython=1.88 conda-forge::polars=2.1.0"
+    conda "bioconda::dnaio=1.2.4 conda-forge::biopython=1.88 conda-forge::gzip=1.14 conda-forge::polars=2.1.0"
     container "${ workflow.containerEngine == 'apptainer' ?
-        'oras://community.wave.seqera.io/library/dnaio_biopython_gzip_polars:66d28331775c5540' :
-        'community.wave.seqera.io/library/dnaio_biopython_gzip_polars:506a2edd75f967d3' }"
+        'oras://community.wave.seqera.io/library/dnaio_biopython_gzip_polars:598924ba7ca09670' :
+        'community.wave.seqera.io/library/dnaio_biopython_gzip_polars:f7a5574515f59aa6' }"
 
     tag "${sample_id}"
 
