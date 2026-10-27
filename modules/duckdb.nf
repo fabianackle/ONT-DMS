@@ -23,7 +23,7 @@ process DUCKDB {
         columns = {
             'read_id': 'UUID',
             'barcode': 'VARCHAR',
-            'is_valid_barcode ': 'BOOLEAN'
+            'is_valid_barcode': 'BOOLEAN'
         });
 
     CREATE TABLE hq_barcodes AS
