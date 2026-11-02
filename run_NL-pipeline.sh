@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 nextflow run main.nf \
-    -params-file kdelr.json \
     -profile conda \
+    -params-file params.json \
+    -resume \
     -with-report \
     -with-timeline

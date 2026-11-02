@@ -4,7 +4,7 @@
 #SBATCH --time=1-00:00:00
 #SBATCH --output=log/main_%j
 ##SBATCH --mail-user=user@example.com
-##SBATCH --mail-type=BEGIN,END 
+##SBATCH --mail-type=BEGIN,END
 
 module load miniforge3
 module load apptainer
