@@ -13,7 +13,7 @@ def main(barcode_map, input_bam):
         reader = csv.DictReader(csvfile)
         rows = list(reader)
         qname_to_rname = {row['read_id']: row['barcode_id'] for row in rows}  # dict mapping qname to rname
-        rnames = {row['barcode_id'] for row in rows}                          # uniqe rnames
+        rnames = {row['barcode_id'] for row in rows}                          # unique rnames
 
     with pysam.AlignmentFile(input_bam, "rb") as bam_in:
         header_dict = bam_in.header.to_dict()

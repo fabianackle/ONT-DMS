@@ -3,7 +3,6 @@ import argparse
 import re
 import dnaio
 import polars as pl
-from Bio import SeqIO
 from Bio.Seq import Seq
 
 
@@ -94,7 +93,7 @@ def compare_aa_sequences(sequence, reference):
 
 def get_variants(sequences, reference, translate_barcode):
     """
-    Determine amino acid changes for each consensus sequence relative to a the reference.
+    Determine amino acid changes for each consensus sequence relative to the reference.
 
     Args:
         sequences (dict): Dictionary mapping cluster IDs to extracted (barcode, ORF) sequences.

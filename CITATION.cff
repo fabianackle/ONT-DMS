@@ -2,7 +2,7 @@
 # Visit https://bit.ly/cffinit to generate yours today!
 
 cff-version: 1.2.0
-title: NestLink-pipeline
+title: ONT-DMS
 message: >-
   If you use this software, please cite it using the
   metadata from this file.
@@ -12,12 +12,12 @@ authors:
     family-names: Ackle
     affiliation: University of Zurich
     orcid: 'https://orcid.org/0000-0002-7199-5004'
-repository-code: 'https://github.com/fabianackle/NestLink-pipeline'
+repository-code: 'https://github.com/fabianackle/ONT-DMS'
 keywords:
+  - deep mutational scanning
+  - Oxford Nanopore sequencing
+  - barcode sequencing
+  - consensus sequence generation
+  - variant calling
   - NestLink
-  - Barcode
-  - Consensus
-  - Nanopore
-  - Workflow
-  - Pipeline
 license: MIT

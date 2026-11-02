@@ -32,7 +32,7 @@ def barcodes_to_dataframe(file_path):
     return pl.DataFrame(data)
 
 
-def map_barcodes_to_hq_barcodes(file_path, data=[]):
+def map_barcodes_to_hq_barcodes(file_path, data=None):
     """
     Parse a SAM file of barcodes aligned to high-quality barcodes into a polars DataFrame mapping read IDs to barcode IDs.
 
@@ -43,6 +43,9 @@ def map_barcodes_to_hq_barcodes(file_path, data=[]):
         pl.DataFrame: A DataFrame with 'read_id', 'barcode_id', 'cigar' and 'edit_distance' columns.
     """
     with open(file_path, "r") as f:
+        if data is None:
+            data = []
+            
         for line in f:
             # Skip header lines
             if line.startswith("@"):
@@ -59,7 +62,9 @@ def map_barcodes_to_hq_barcodes(file_path, data=[]):
 
             # Check if the alignment is valid (flag 4 means unaligned)
             if barcode_id != "*" and not (flag & 4):
-                edit_distance = fields[12].split(":")[2]
+                edit_distance = next(
+                    int(tag[5:]) for tag in fields[11:] if tag.startswith("NM:i:")
+                )
                 row = {"read_id": read_id, "barcode_id": barcode_id, "cigar": cigar, "edit_distance": edit_distance}
                 data.append(row)
 
@@ -114,7 +119,7 @@ def main(sample_id:str, reference_seq:str, barcodes:str, barcode_min_coverage:in
         sample_id (str): The sample id.
         barcodes (str): Path to the FASTA file with extracted barcodes.
         reference_seq (str): Path to the reference sequence FASTA file.
-        barcode_regex (srt): Regex that matches the used barcode.
+        barcode_regex (str): Regex that matches the used barcode.
         threads (int): Threads for alignment.
     """
     # Reading in the barcodes.
@@ -126,7 +131,7 @@ def main(sample_id:str, reference_seq:str, barcodes:str, barcode_min_coverage:in
     )
     barcodes_df.write_csv(f"{sample_id}_reads.csv")
 
-    # Getting high-quality barcodes, they have to be valid and be seen more than 10 times.
+    # Getting high-quality barcodes, they have to be valid and be seen more than barcode_min_coverage times.
     hq_barcodes_df = duckdb.sql(
         f"""
         SELECT 

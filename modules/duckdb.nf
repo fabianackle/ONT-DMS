@@ -1,8 +1,8 @@
 process DUCKDB {
-    conda "conda-forge::duckdb-cli=1.5.3"
+    conda "conda-forge::duckdb-cli=2.0.0"
     container "${ workflow.containerEngine == 'apptainer' ?
-        'oras://community.wave.seqera.io/library/duckdb-cli:1.5.3--1b74915d48b05830' :
-        'community.wave.seqera.io/library/duckdb-cli:1.5.3--491aebc759945c8d' }"
+        'oras://community.wave.seqera.io/library/duckdb-cli:2.0.0--ff92182741e479c5' :
+        'community.wave.seqera.io/library/duckdb-cli:2.0.0--6afe874dbbaa5104' }"
 
     tag "${sample_id}"
 
@@ -23,7 +23,7 @@ process DUCKDB {
         columns = {
             'read_id': 'UUID',
             'barcode': 'VARCHAR',
-            'is_valid_barcode ': 'BOOLEAN'
+            'is_valid_barcode': 'BOOLEAN'
         });
 
     CREATE TABLE hq_barcodes AS

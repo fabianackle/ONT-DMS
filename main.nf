@@ -20,10 +20,10 @@ include { DUCKDB              } from './modules/duckdb.nf'
 workflow {
     log.info(
         """
-        ┌─────────────────────────────────────────────┐
-        │ O N T   C O N S E N S U S   P I P E L I N E │
-        │ by Fabian Ackle                             │  
-        └─────────────────────────────────────────────┘
+        ┌─────────────────────────────────┐
+        │ O N T - D M S   P I P E L I N E │
+        │ by Fabian Ackle                 │  
+        └─────────────────────────────────┘
         """.stripIndent()
     )
 
@@ -61,8 +61,8 @@ workflow consensus {
     variant_ch = DORADO_CONSENSUS.out.consensus.combine(reference_ch)
     VARIANT_CALLING(variant_ch)
 
-    consquence_ch = DORADO_CONSENSUS.out.variants.join(GROUP_BY_BARCODES.out.references)
-    CONSEQUENCE_CALLING(consquence_ch)
+    consequence_ch = DORADO_CONSENSUS.out.variants.join(GROUP_BY_BARCODES.out.references)
+    CONSEQUENCE_CALLING(consequence_ch)
 
     duck_ch = GROUP_BY_BARCODES.out.csv.join(VARIANT_CALLING.out.variants_db).join(CONSEQUENCE_CALLING.out.consequences)
     DUCKDB(duck_ch)
