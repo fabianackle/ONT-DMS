@@ -1,11 +1,7 @@
-.DS_store
+.DS_Store
 .nextflow
 data
-medaka_input
-medaka_output
 results
 work
 .nextflow.log*
 *.html
-mini_align.sh
-etc

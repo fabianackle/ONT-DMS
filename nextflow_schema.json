@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://raw.githubusercontent.com/fabianackle/ONT-DMS/refs/heads/main/nextflow_schema.json",
-  "title": " pipeline parameters",
+  "title": "ONT-DMS pipeline parameters",
   "description": "",
   "type": "object",
   "$defs": {
@@ -80,7 +80,7 @@
         "barcode_min_coverage": {
           "type": "integer",
           "default": 10,
-          "description": "The minimal amount a barcode has to be seen to be considered a high-quality barcode."
+          "description": "Minimum number of reads containing a barcode required to classify it as high quality."
         }
       },
       "required": [

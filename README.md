@@ -17,7 +17,7 @@ Finally, variants are called with the pipeline, linking barcodes or flycodes wit
 
 ### Cluster execution
 
-- Slurm workflow manager
+- Slurm workload manager
 - Nextflow, installed in a Mamba/ Conda environment called `nextflow`. 
 - Mamba/ Conda or Apptainer
 - Dorado if not using containers
@@ -34,23 +34,23 @@ Finally, variants are called with the pipeline, linking barcodes or flycodes wit
 
 # Parameters
 
-| Parameter                 | Type                 | Description                                                                         |
-|---------------------------|----------------------|-------------------------------------------------------------------------------------|
-| `data`                    | String               | Path to input BAM file(s).†                                                         |
-| `reference`               | String               | Path to reference FASTA file.                                                       |
-| `filter_quality`          | Float                | Minimum mean read quality threshold.                                                |
-| `filter_min_length`       | Integer              | Read filtering minimum length threshold.                                            |
-| `filter_max_length`       | Integer              | Read filtering maximum length threshold.                                            |
-| `extract_barcode_adapter` | String               | Linked cutadapt adapter for barcode extraction.†2                                   |
-| `barcode_regex`           | String               | Regular expression matching the barcode.                                            |
-| `barcode_min_coverage`    | Integer              | The minimal amount a barcode has to be seen to be considered a high-quality barcode.|
-| `polish_bacteria`         | Boolean              | Use a bacterial model for polishing with dorado (optional).†3                       |
-| `barcode_5p`              | String               | 5' sequence flanking the barcode.                                                   |
-| `barcode_3p`              | String               | 3' sequence flanking the barcode.                                                   |
-| `orf_5p`                  | String               | 5' sequence flanking the ORF.                                                       |
-| `orf_3p`                  | String               | 3' sequence flanking the ORF.                                                       |
-| `translate_barcode`       | Boolean              | Translates barcode, used with flycodes.                                             |
-| `outdir`                  | String               | Output directory for results.                                                       |
+| Parameter                 | Type                 | Description                                                                          |
+|---------------------------|----------------------|--------------------------------------------------------------------------------------|
+| `data`                    | String               | Path to input BAM file(s).†                                                          |
+| `reference`               | String               | Path to reference FASTA file.                                                        |
+| `filter_quality`          | Float                | Minimum mean read quality threshold.                                                 |
+| `filter_min_length`       | Integer              | Read filtering minimum length threshold.                                             |
+| `filter_max_length`       | Integer              | Read filtering maximum length threshold.                                             |
+| `extract_barcode_adapter` | String               | Linked cutadapt adapter for barcode extraction.†2                                    |
+| `barcode_regex`           | String               | Regular expression matching the barcode.                                             |
+| `barcode_min_coverage`    | Integer              | Minimum number of reads containing a barcode required to classify it as high quality.|
+| `polish_bacteria`         | Boolean              | Use a bacterial model for polishing with dorado (optional).†3                        |
+| `barcode_5p`              | String               | 5' sequence flanking the barcode.                                                    |
+| `barcode_3p`              | String               | 3' sequence flanking the barcode.                                                    |
+| `orf_5p`                  | String               | 5' sequence flanking the ORF.                                                        |
+| `orf_3p`                  | String               | 3' sequence flanking the ORF.                                                        |
+| `translate_barcode`       | Boolean              | Translates barcode, used with flycodes.                                              |
+| `outdir`                  | String               | Output directory for results.                                                        |
 
 † for multiple BAM files use `*`, e.g. `data/barcode*.bam`.
 †2 see [Linked adapters (combined 5’ and 3’ adapter)](https://cutadapt.readthedocs.io/en/stable/guide.html#linked-adapters).

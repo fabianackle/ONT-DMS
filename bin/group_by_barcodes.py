@@ -114,7 +114,7 @@ def main(sample_id:str, reference_seq:str, barcodes:str, barcode_min_coverage:in
         sample_id (str): The sample id.
         barcodes (str): Path to the FASTA file with extracted barcodes.
         reference_seq (str): Path to the reference sequence FASTA file.
-        barcode_regex (srt): Regex that matches the used barcode.
+        barcode_regex (str): Regex that matches the used barcode.
         threads (int): Threads for alignment.
     """
     # Reading in the barcodes.
@@ -126,7 +126,7 @@ def main(sample_id:str, reference_seq:str, barcodes:str, barcode_min_coverage:in
     )
     barcodes_df.write_csv(f"{sample_id}_reads.csv")
 
-    # Getting high-quality barcodes, they have to be valid and be seen more than 10 times.
+    # Getting high-quality barcodes, they have to be valid and be seen more than barcode_min_coverage times.
     hq_barcodes_df = duckdb.sql(
         f"""
         SELECT 
