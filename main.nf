@@ -20,10 +20,10 @@ include { DUCKDB              } from './modules/duckdb.nf'
 workflow {
     log.info(
         """
-        ┌─────────────────────────────────────────────┐
-        │ O N T   C O N S E N S U S   P I P E L I N E │
-        │ by Fabian Ackle                             │  
-        └─────────────────────────────────────────────┘
+        ┌─────────────────────────────────┐
+        │ O N T - D M S   P I P E L I N E │
+        │ by Fabian Ackle                 │  
+        └─────────────────────────────────┘
         """.stripIndent()
     )
 
