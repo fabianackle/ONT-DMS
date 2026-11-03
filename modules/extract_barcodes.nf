@@ -1,8 +1,8 @@
 process EXTRACT_BARCODES {
-    conda "bioconda::cutadapt=5.2 bioconda::seqkit=2.14.0"
+    conda "bioconda::cutadapt=5.2"
     container "${ workflow.containerEngine == 'apptainer' ?
-        'oras://community.wave.seqera.io/library/cutadapt_seqkit:2c251bd7cd36e8b5' :
-        'community.wave.seqera.io/library/cutadapt_seqkit:5a8bf2f901f55ff2' }"
+        'oras://community.wave.seqera.io/library/cutadapt:5.2--7e96173061760bf9' :
+        'community.wave.seqera.io/library/cutadapt:5.2--0bf1fa95d2357cb7' }"
 
     tag "${sample_id}"
 
@@ -14,34 +14,14 @@ process EXTRACT_BARCODES {
 
     script:
     """
-    extract_barcode_adapter_rc=\$(echo '${params.extract_barcode_adapter}' | tr 'ACGTacgt.' 'TGCAtgca.' | rev)
-
     cutadapt \
         -j ${task.cpus} \
         -g ${params.extract_barcode_adapter} \
         --error-rate 0.1 \
+        --revcomp \
         --maximum-length 50 \
         --discard-untrimmed \
-        --fasta ${fastq_gz} > ${sample_id}_barcodes_fwd.fasta
-
-    cutadapt \
-        -j ${task.cpus} \
-        -g \$extract_barcode_adapter_rc \
-        --error-rate 0.1 \
-        --maximum-length 50 \
-        --discard-untrimmed \
-        --fasta ${fastq_gz} > ${sample_id}_barcodes_rc.fasta
-
-    seqkit seq \
-        --threads ${task.cpus} \
-        --seq-type dna \
-        --reverse --complement ${sample_id}_barcodes_rc.fasta \
-        --out-file ${sample_id}_barcodes_rev.fasta
-
-    cat ${sample_id}_barcodes_fwd.fasta ${sample_id}_barcodes_rev.fasta > ${sample_id}_barcodes_concat.fasta
-
-    seqkit rmdup \
-        --by-name ${sample_id}_barcodes_concat.fasta \
-        --out-file ${sample_id}_barcodes.fasta
+        --rename='{header}' \
+        --fasta ${fastq_gz} > ${sample_id}_barcodes.fasta
     """
 }
